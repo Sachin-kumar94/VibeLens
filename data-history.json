@@ -1,0 +1,711 @@
+[
+  {
+    "id": "analysis-5z51ntnki",
+    "timestamp": "2026-07-28T08:04:15.149Z",
+    "primaryEmotion": "Neutral",
+    "confidenceScore": 0.85,
+    "emotions": {
+      "Happy": 0.3,
+      "Neutral": 0.6,
+      "Sad": 0.03,
+      "Angry": 0.01,
+      "Fear": 0.01,
+      "Surprise": 0.03,
+      "Disgust": 0.02
+    },
+    "facesDetectedCount": 1,
+    "sceneType": "Indoor",
+    "sceneConfidence": 0.95,
+    "objectsDetected": [
+      "tie",
+      "shirt",
+      "collar",
+      "badge"
+    ],
+    "colorTone": "Bright Tone",
+    "colors": [
+      "#F4F3EB",
+      "#CE422B",
+      "#FFFFFF"
+    ],
+    "colorInterpretation": "The bright off-white background and white collared shirt establish a clean, neutral canvas. The bold red striped tie brings a sense of energy, confidence, and authority, symbolizing action and professional determination.",
+    "overallVibe": "Professional",
+    "vibeConfidence": 0.92,
+    "captions": [
+      {
+        "style": "Instagram",
+        "text": "Dressed for the goals I want to achieve today. 💼✨"
+      },
+      {
+        "style": "LinkedIn",
+        "text": "Prepared to take on new opportunities and continuously grow in my professional journey."
+      },
+      {
+        "style": "Story",
+        "text": "Focus: ON. Let's make today count! 🚀"
+      },
+      {
+        "style": "Professional",
+        "text": "Formal portrait demonstrating readiness, professional standards, and focus."
+      },
+      {
+        "style": "Creative",
+        "text": "Simplicity in attire, focus in mind. Classic stripes for a classic look."
+      }
+    ],
+    "hashtags": [
+      "#ProfessionalStyle",
+      "#SuccessMindset",
+      "#FormalWear",
+      "#CareerGrowth",
+      "#CorporateLook"
+    ],
+    "musicRecommendations": [
+      {
+        "title": "Clocks",
+        "artist": "Coldplay",
+        "genre": "Alternative",
+        "vibe": "Focused and steady"
+      }
+    ]
+  },
+  {
+    "id": "analysis-wa4nez9e2",
+    "timestamp": "2026-07-25T15:55:24.546Z",
+    "primaryEmotion": "Neutral",
+    "confidenceScore": 0.85,
+    "emotions": {
+      "Happy": 0.05,
+      "Neutral": 0.85,
+      "Sad": 0.05,
+      "Angry": 0.02,
+      "Fear": 0.01,
+      "Surprise": 0.01,
+      "Disgust": 0.01
+    },
+    "facesDetectedCount": 1,
+    "sceneType": "Indoor",
+    "sceneConfidence": 0.9,
+    "objectsDetected": [
+      "jacket",
+      "t-shirt",
+      "pants",
+      "smartphone",
+      "wrist watch"
+    ],
+    "colorTone": "Neutral Tone",
+    "colors": [
+      "#2F3538",
+      "#F4F4F6",
+      "#9A9084"
+    ],
+    "colorInterpretation": "The dark denim jacket and black pants create a strong, grounded aesthetic, contrasted by the clean simplicity of the white t-shirt. The textured neutral background enhances the modern, casual, and styled look of the subject.",
+    "overallVibe": "Aesthetic",
+    "vibeConfidence": 0.8,
+    "captions": [
+      {
+        "style": "Instagram",
+        "text": "Keeping it simple, keeping it real. 🖤"
+      },
+      {
+        "style": "LinkedIn",
+        "text": "Focusing on clarity, posture, and steady progress."
+      },
+      {
+        "style": "Story",
+        "text": "Just pausing for a quick second."
+      },
+      {
+        "style": "Professional",
+        "text": "A structured perspective on daily casual style."
+      },
+      {
+        "style": "Creative",
+        "text": "Textures, tones, and quiet moments."
+      }
+    ],
+    "hashtags": [
+      "streetstyle",
+      "denimjacket",
+      "mensfashion",
+      "casualoutfit",
+      "neutraltones"
+    ],
+    "musicRecommendations": [
+      {
+        "title": "Starboy",
+        "artist": "The Weeknd",
+        "genre": "R&B/Pop",
+        "vibe": "Energetic"
+      },
+      {
+        "title": "Nightcall",
+        "artist": "Kavinsky",
+        "genre": "Synthwave",
+        "vibe": "Aesthetic"
+      }
+    ]
+  },
+  {
+    "id": "analysis-7kv0u5ik3",
+    "timestamp": "2026-07-25T15:17:29.827Z",
+    "primaryEmotion": "Calm",
+    "confidenceScore": 0.9,
+    "emotions": {
+      "Happy": 0.05,
+      "Neutral": 0.1,
+      "Sad": 0.02,
+      "Angry": 0.01,
+      "Surprise": 0.01,
+      "Fear": 0.01,
+      "Disgust": 0.01
+    },
+    "facesDetectedCount": 0,
+    "sceneType": "Sunset",
+    "sceneConfidence": 0.91,
+    "objectsDetected": [
+      "subject element",
+      "ambient light",
+      "decor focalpoint",
+      "structural dynamic"
+    ],
+    "colorTone": "Warm Tone",
+    "colors": [
+      "#2c3e50",
+      "#e74c3c",
+      "#f1c40f"
+    ],
+    "colorInterpretation": "The color layout represents an intriguing contrast that aligns perfectly with a adventure vibe.",
+    "overallVibe": "Adventure",
+    "vibeConfidence": 0.9,
+    "captions": [
+      {
+        "style": "Instagram",
+        "text": "Living in a fully adventure headspace today. ✨"
+      },
+      {
+        "style": "LinkedIn",
+        "text": "Analyzing visual data cues reveals powerful psychological trends. Emotional state: Calm."
+      },
+      {
+        "style": "Story",
+        "text": "Current mood: Calm / Current scene: Sunset."
+      },
+      {
+        "style": "Professional",
+        "text": "A beautifully-composed representation indicating adventure themes."
+      },
+      {
+        "style": "Creative",
+        "text": "Wander where the coordinates are blurry. Finding deep inspiration in this adventure space."
+      }
+    ],
+    "hashtags": [
+      "adventure",
+      "calm",
+      "vibelens",
+      "aesthetic",
+      "picoftheday"
+    ],
+    "musicRecommendations": [
+      {
+        "title": "Melancholy Hill",
+        "artist": "Gorillaz",
+        "genre": "Indie Pop",
+        "vibe": "Adventure"
+      },
+      {
+        "title": "Breathe",
+        "artist": "Pink Floyd",
+        "genre": "Classic Rock",
+        "vibe": "Calm"
+      },
+      {
+        "title": "Level Up",
+        "artist": "Ciara",
+        "genre": "Hip-Hop",
+        "vibe": "Energetic"
+      }
+    ]
+  },
+  {
+    "id": "analysis-pj1d3gbmt",
+    "timestamp": "2026-07-25T15:09:35.583Z",
+    "primaryEmotion": "Surprise",
+    "confidenceScore": 0.88,
+    "emotions": {
+      "Happy": 0.05,
+      "Neutral": 0.1,
+      "Sad": 0.02,
+      "Angry": 0.01,
+      "Surprise": 0.84,
+      "Fear": 0.01,
+      "Disgust": 0.01
+    },
+    "facesDetectedCount": 0,
+    "sceneType": "Sunset",
+    "sceneConfidence": 0.84,
+    "objectsDetected": [
+      "subject element",
+      "ambient light",
+      "decor focalpoint",
+      "structural dynamic"
+    ],
+    "colorTone": "Cold Tone",
+    "colors": [
+      "#2c3e50",
+      "#e74c3c",
+      "#f1c40f"
+    ],
+    "colorInterpretation": "The color layout represents an intriguing contrast that aligns perfectly with a calm vibe.",
+    "overallVibe": "Calm",
+    "vibeConfidence": 0.9,
+    "captions": [
+      {
+        "style": "Instagram",
+        "text": "Living in a fully calm headspace today. ✨"
+      },
+      {
+        "style": "LinkedIn",
+        "text": "Analyzing visual data cues reveals powerful psychological trends. Emotional state: Surprise."
+      },
+      {
+        "style": "Story",
+        "text": "Current mood: Surprise / Current scene: Sunset."
+      },
+      {
+        "style": "Professional",
+        "text": "A beautifully-composed representation indicating calm themes."
+      },
+      {
+        "style": "Creative",
+        "text": "Wander where the coordinates are blurry. Finding deep inspiration in this calm space."
+      }
+    ],
+    "hashtags": [
+      "calm",
+      "surprise",
+      "vibelens",
+      "aesthetic",
+      "picoftheday"
+    ],
+    "musicRecommendations": [
+      {
+        "title": "Melancholy Hill",
+        "artist": "Gorillaz",
+        "genre": "Indie Pop",
+        "vibe": "Calm"
+      },
+      {
+        "title": "Breathe",
+        "artist": "Pink Floyd",
+        "genre": "Classic Rock",
+        "vibe": "Calm"
+      },
+      {
+        "title": "Level Up",
+        "artist": "Ciara",
+        "genre": "Hip-Hop",
+        "vibe": "Energetic"
+      }
+    ]
+  },
+  {
+    "id": "analysis-6ezv3m4vn",
+    "timestamp": "2026-07-25T14:45:58.207Z",
+    "primaryEmotion": "Calm",
+    "confidenceScore": 0.87,
+    "emotions": {
+      "Happy": 0.05,
+      "Neutral": 0.1,
+      "Sad": 0.02,
+      "Angry": 0.01,
+      "Surprise": 0.01,
+      "Fear": 0.01,
+      "Disgust": 0.01
+    },
+    "facesDetectedCount": 0,
+    "sceneType": "Modern Office",
+    "sceneConfidence": 0.98,
+    "objectsDetected": [
+      "subject element",
+      "ambient light",
+      "decor focalpoint",
+      "structural dynamic"
+    ],
+    "colorTone": "Cold Tone",
+    "colors": [
+      "#2c3e50",
+      "#e74c3c",
+      "#f1c40f"
+    ],
+    "colorInterpretation": "The color layout represents an intriguing contrast that aligns perfectly with a aesthetic vibe.",
+    "overallVibe": "Aesthetic",
+    "vibeConfidence": 0.95,
+    "captions": [
+      {
+        "style": "Instagram",
+        "text": "Living in a fully aesthetic headspace today. ✨"
+      },
+      {
+        "style": "LinkedIn",
+        "text": "Analyzing visual data cues reveals powerful psychological trends. Emotional state: Calm."
+      },
+      {
+        "style": "Story",
+        "text": "Current mood: Calm / Current scene: Modern Office."
+      },
+      {
+        "style": "Professional",
+        "text": "A beautifully-composed representation indicating aesthetic themes."
+      },
+      {
+        "style": "Creative",
+        "text": "Wander where the coordinates are blurry. Finding deep inspiration in this aesthetic space."
+      }
+    ],
+    "hashtags": [
+      "aesthetic",
+      "calm",
+      "vibelens",
+      "aesthetic",
+      "picoftheday"
+    ],
+    "musicRecommendations": [
+      {
+        "title": "Melancholy Hill",
+        "artist": "Gorillaz",
+        "genre": "Indie Pop",
+        "vibe": "Aesthetic"
+      },
+      {
+        "title": "Breathe",
+        "artist": "Pink Floyd",
+        "genre": "Classic Rock",
+        "vibe": "Calm"
+      },
+      {
+        "title": "Level Up",
+        "artist": "Ciara",
+        "genre": "Hip-Hop",
+        "vibe": "Energetic"
+      }
+    ]
+  },
+  {
+    "id": "analysis-mjwy8mzsr",
+    "timestamp": "2026-07-25T14:44:50.153Z",
+    "primaryEmotion": "Neutral",
+    "confidenceScore": 0.87,
+    "emotions": {
+      "Happy": 0.05,
+      "Neutral": 0.82,
+      "Sad": 0.02,
+      "Angry": 0.01,
+      "Surprise": 0.01,
+      "Fear": 0.01,
+      "Disgust": 0.01
+    },
+    "facesDetectedCount": 0,
+    "sceneType": "Beach",
+    "sceneConfidence": 0.88,
+    "objectsDetected": [
+      "subject element",
+      "ambient light",
+      "decor focalpoint",
+      "structural dynamic"
+    ],
+    "colorTone": "Cold Tone",
+    "colors": [
+      "#2c3e50",
+      "#e74c3c",
+      "#f1c40f"
+    ],
+    "colorInterpretation": "The color layout represents an intriguing contrast that aligns perfectly with a energetic vibe.",
+    "overallVibe": "Energetic",
+    "vibeConfidence": 0.88,
+    "captions": [
+      {
+        "style": "Instagram",
+        "text": "Living in a fully energetic headspace today. ✨"
+      },
+      {
+        "style": "LinkedIn",
+        "text": "Analyzing visual data cues reveals powerful psychological trends. Emotional state: Neutral."
+      },
+      {
+        "style": "Story",
+        "text": "Current mood: Neutral / Current scene: Beach."
+      },
+      {
+        "style": "Professional",
+        "text": "A beautifully-composed representation indicating energetic themes."
+      },
+      {
+        "style": "Creative",
+        "text": "Wander where the coordinates are blurry. Finding deep inspiration in this energetic space."
+      }
+    ],
+    "hashtags": [
+      "energetic",
+      "neutral",
+      "vibelens",
+      "aesthetic",
+      "picoftheday"
+    ],
+    "musicRecommendations": [
+      {
+        "title": "Melancholy Hill",
+        "artist": "Gorillaz",
+        "genre": "Indie Pop",
+        "vibe": "Energetic"
+      },
+      {
+        "title": "Breathe",
+        "artist": "Pink Floyd",
+        "genre": "Classic Rock",
+        "vibe": "Calm"
+      },
+      {
+        "title": "Level Up",
+        "artist": "Ciara",
+        "genre": "Hip-Hop",
+        "vibe": "Energetic"
+      }
+    ]
+  },
+  {
+    "id": "analysis-seed-1",
+    "timestamp": "2026-07-22T14:36:30.415Z",
+    "primaryEmotion": "Happy",
+    "confidenceScore": 0.94,
+    "emotions": {
+      "Happy": 0.94,
+      "Neutral": 0.04,
+      "Surprise": 0.02
+    },
+    "facesDetectedCount": 1,
+    "sceneType": "Beach",
+    "sceneConfidence": 0.95,
+    "objectsDetected": [
+      "sand",
+      "ocean",
+      "parasol"
+    ],
+    "colorTone": "Warm Tone",
+    "colors": [
+      "#f1c40f",
+      "#e67e22",
+      "#3498db"
+    ],
+    "colorInterpretation": "Golden sand tones and bright turquoise waters radiate dynamic warmth, positivity, and summer vibe.",
+    "overallVibe": "Energetic",
+    "vibeConfidence": 0.92,
+    "captions": [
+      {
+        "style": "Instagram",
+        "text": "Salty hair, sandy toes, sunset glow. 🌊✨"
+      },
+      {
+        "style": "LinkedIn",
+        "text": "Recharging by the ocean is a great way to inspire creative vision and sustain high productivity."
+      }
+    ],
+    "hashtags": [
+      "beachlife",
+      "summervibes",
+      "warmcolors",
+      "recharge"
+    ],
+    "musicRecommendations": [
+      {
+        "title": "Sunset Lover",
+        "artist": "Petit Biscuit",
+        "genre": "Chill/Electronic",
+        "vibe": "Energetic"
+      },
+      {
+        "title": "Walking on a Dream",
+        "artist": "Empire of the Sun",
+        "genre": "Synthpop",
+        "vibe": "Energetic"
+      }
+    ]
+  },
+  {
+    "id": "analysis-seed-2",
+    "timestamp": "2026-07-23T14:36:30.416Z",
+    "primaryEmotion": "Neutral",
+    "confidenceScore": 0.88,
+    "emotions": {
+      "Neutral": 0.88,
+      "Sad": 0.08,
+      "Happy": 0.04
+    },
+    "facesDetectedCount": 1,
+    "sceneType": "Office",
+    "sceneConfidence": 0.91,
+    "objectsDetected": [
+      "laptop",
+      "desk",
+      "coffee mug",
+      "chair"
+    ],
+    "colorTone": "Neutral Tone",
+    "colors": [
+      "#7f8c8d",
+      "#bdc3c7",
+      "#2c3e50"
+    ],
+    "colorInterpretation": "Sleek metallic greys and slate blue reflect focus, productivity, and professional composure.",
+    "overallVibe": "Professional",
+    "vibeConfidence": 0.94,
+    "captions": [
+      {
+        "style": "Professional",
+        "text": "Finding clarity in deep work environments."
+      },
+      {
+        "style": "LinkedIn",
+        "text": "Efficiency isn't about being busy; it's about being focused. Creating clean spaces for clean thoughts."
+      }
+    ],
+    "hashtags": [
+      "deepwork",
+      "workspace",
+      "focus",
+      "officevibe"
+    ],
+    "musicRecommendations": [
+      {
+        "title": "Midnight City",
+        "artist": "M83",
+        "genre": "Indie/Electronic",
+        "vibe": "Professional"
+      },
+      {
+        "title": "Breathe",
+        "artist": "Telepopmusik",
+        "genre": "Lofi/Downtempo",
+        "vibe": "Calm"
+      }
+    ]
+  },
+  {
+    "id": "analysis-seed-3",
+    "timestamp": "2026-07-24T14:36:30.416Z",
+    "primaryEmotion": "Happy",
+    "confidenceScore": 0.91,
+    "emotions": {
+      "Happy": 0.91,
+      "Surprise": 0.07,
+      "Neutral": 0.02
+    },
+    "facesDetectedCount": 2,
+    "sceneType": "Party",
+    "sceneConfidence": 0.96,
+    "objectsDetected": [
+      "balloons",
+      "lights",
+      "glasses",
+      "guitars"
+    ],
+    "colorTone": "Bright Tone",
+    "colors": [
+      "#9b59b6",
+      "#e74c3c",
+      "#f1c40f"
+    ],
+    "colorInterpretation": "Electric violet, crimson red, and neon golds reflect party warmth, celebration, and energetic joy.",
+    "overallVibe": "Party",
+    "vibeConfidence": 0.97,
+    "captions": [
+      {
+        "style": "Story",
+        "text": "Laughter is loudest where the lights are brightest! 🎉🕺"
+      },
+      {
+        "style": "Creative",
+        "text": "Painting the night with memories and high frequencies."
+      }
+    ],
+    "hashtags": [
+      "partytime",
+      "celebrate",
+      "neonvibes",
+      "friends"
+    ],
+    "musicRecommendations": [
+      {
+        "title": "One More Time",
+        "artist": "Daft Punk",
+        "genre": "EDM/House",
+        "vibe": "Party"
+      },
+      {
+        "title": "Don't Start Now",
+        "artist": "Dua Lipa",
+        "genre": "Pop",
+        "vibe": "Party"
+      }
+    ]
+  },
+  {
+    "id": "analysis-seed-4",
+    "timestamp": "2026-07-25T14:36:30.416Z",
+    "primaryEmotion": "Calm",
+    "confidenceScore": 0.95,
+    "emotions": {
+      "Neutral": 0.7,
+      "Happy": 0.25,
+      "Surprise": 0.05
+    },
+    "facesDetectedCount": 1,
+    "sceneType": "Forest",
+    "sceneConfidence": 0.97,
+    "objectsDetected": [
+      "trees",
+      "canopy",
+      "pathWAY"
+    ],
+    "colorTone": "Cold Tone",
+    "colors": [
+      "#27ae60",
+      "#2ecc71",
+      "#2c3e50"
+    ],
+    "colorInterpretation": "Deep emerald forest tones and cool shadows evoke breathing space, mental clarity, and absolute calmness.",
+    "overallVibe": "Calm",
+    "vibeConfidence": 0.98,
+    "captions": [
+      {
+        "style": "Instagram",
+        "text": "Lost in the right direction. 🌱🌲"
+      },
+      {
+        "style": "Story",
+        "text": "Quiet moments in deep green."
+      }
+    ],
+    "hashtags": [
+      "naturewalk",
+      "forestbath",
+      "peaceful",
+      "aesthetic"
+    ],
+    "musicRecommendations": [
+      {
+        "title": "Intro",
+        "artist": "The xx",
+        "genre": "Ambient",
+        "vibe": "Calm"
+      },
+      {
+        "title": "Weightless",
+        "artist": "Marconi Union",
+        "genre": "Ambient/Drone",
+        "vibe": "Calm"
+      }
+    ]
+  }
+]

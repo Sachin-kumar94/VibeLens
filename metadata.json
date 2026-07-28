@@ -1,0 +1,6 @@
+{
+  "name": "VibeLens",
+  "description": "Intelligent visual emotion and vibe analysis platform that analyzes images and camera streams to detect mood, scene context, color psychology, and recommends custom music, captions, and hashtags.",
+  "requestFramePermissions": ["camera", "microphone"],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
