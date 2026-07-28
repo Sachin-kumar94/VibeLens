@@ -60,6 +60,7 @@ VibeLens/
    npm run dev
    ```
    Open your browser to [http://localhost:3000](http://localhost:3000) to access the Launch Console.
+   https://agent-6a68a4cbc278b13ecc8dba05--vibelens-app.netlify.app
 
 ---
 
