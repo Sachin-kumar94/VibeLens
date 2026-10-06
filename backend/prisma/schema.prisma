@@ -1,0 +1,1000 @@
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model User {
+  id                   String            @id @default(cuid())
+  name                 String
+  email                String            @unique
+  emailVerified        Boolean           @default(false)
+  emailVerifiedAt      DateTime?
+  passwordHash         String?
+  avatarUrl            String?           @default("/assets/editorial/hero-editorial-woman.jpg")
+  theme                String            @default("editorial")
+  language             String            @default("en")
+  timezone             String?           @default("UTC")
+  status               String            @default("ACTIVE") // ACTIVE, PENDING_VERIFICATION, SUSPENDED, DELETED
+  role                 String            @default("USER")   // USER, ADMIN
+  plan                 String            @default("Free Plan")
+  
+  // Baseline & Calibration
+  confidenceBaseline   Int               @default(82)
+  paceBaselineWpm      Int               @default(138)
+  postureBaseline      Int               @default(85)
+  vocalEnergyBaseline  Int               @default(78)
+  sensoryFeedback      Boolean           @default(true)
+  privateMode          Boolean           @default(false)
+
+  createdAt            DateTime          @default(now())
+  updatedAt            DateTime          @updatedAt
+  lastLoginAt          DateTime?
+
+  // Relational Ownership
+  identities           AccountIdentity[]
+  sessions             Session[]
+  verificationTokens   VerificationToken[]
+  passwordResetTokens  PasswordResetToken[]
+  analyses             Analysis[]
+  voiceAnalyses        VoiceAnalysis[]
+  bodyAnalyses         BodyAnalysis[]
+  fusionAnalyses       FusionAnalysis[]
+  journalEntries       JournalEntry[]
+  insights             Insight[]
+  sessionReports       SessionReport[]
+  notifications        Notification[]
+  auditLogs            AuditLog[]
+  generatedContents    GeneratedContent[]
+  batchAnalyses        BatchAnalysis[]
+  reports              Report[]
+  comparisons          Comparison[]
+  presentationSessions PresentationSession[]
+  presentationIntegrityEvents PresentationIntegrityEvent[]
+  interviewSessions    InterviewSession[]
+  interviewAnswers     InterviewAnswer[]
+  customQuestions      InterviewQuestion[]
+  interviewIntegrityEvents InterviewIntegrityEvent[]
+  skillMasteries       SkillMastery[]
+  documents            UserDocument[]
+  documentChunks       DocumentChunk[]
+  resumeProfiles       ResumeProfile[]
+  jobDescriptions      JobDescription[]
+  interviewSkillProgress InterviewSkillProgress[]
+  aiConversations      AiConversation[]
+  documentQuizzes      DocumentQuiz[]
+  documentFlashcards   DocumentFlashcard[]
+  studyPlans           PersonalizedStudyPlan[]
+  aiMemory             AiMemory?
+}
+
+model AccountIdentity {
+  id                String   @id @default(cuid())
+  userId            String
+  provider          String   // "google", "microsoft", "github", "linkedin"
+  providerAccountId String
+  providerEmail     String?
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
+
+  user              User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([provider, providerAccountId])
+  @@index([userId])
+}
+
+model Session {
+  id               String   @id @default(cuid())
+  userId           String
+  tokenHash        String   @unique
+  userAgent        String?
+  userAgentSummary String?
+  deviceInfo       String?
+  ipHash           String?
+  rememberMe       Boolean  @default(false)
+  expiresAt        DateTime
+  createdAt        DateTime @default(now())
+  lastUsedAt       DateTime @default(now())
+
+  user             User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@index([tokenHash])
+}
+
+model VerificationToken {
+  id         String   @id @default(cuid())
+  userId     String
+  tokenHash  String   @unique
+  expiresAt  DateTime
+  createdAt  DateTime @default(now())
+
+  user       User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+}
+
+model PasswordResetToken {
+  id         String   @id @default(cuid())
+  userId     String
+  tokenHash  String   @unique
+  expiresAt  DateTime
+  usedAt     DateTime?
+  createdAt  DateTime @default(now())
+
+  user       User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+}
+
+model EmailVerificationCode {
+  id          String    @id @default(cuid())
+  email       String
+  userId      String?
+  codeHash    String
+  purpose     String    @default("REGISTRATION") // REGISTRATION, LOGIN, EMAIL_CHANGE, PASSWORD_RESET
+  expiresAt   DateTime
+  attempts    Int       @default(0)
+  maxAttempts Int       @default(5)
+  consumedAt  DateTime?
+  createdAt   DateTime  @default(now())
+
+  @@index([email, purpose])
+}
+
+model OtpVerification {
+  id        String   @id @default(cuid())
+  email     String
+  codeHash  String
+  attempts  Int      @default(0)
+  expiresAt DateTime
+  createdAt DateTime @default(now())
+
+  @@index([email])
+}
+
+model AuditLog {
+  id        String   @id @default(cuid())
+  userId    String?
+  event     String   // "login_success", "login_failed", "register", "logout", "password_reset", "change_password", "oauth_linked"
+  details   String?  // JSON string
+  ipHash    String?
+  userAgent String?
+  createdAt DateTime @default(now())
+
+  user      User?    @relation(fields: [userId], references: [id], onDelete: SetNull)
+
+  @@index([userId])
+}
+
+model Analysis {
+  id              String   @id @default(cuid())
+  userId          String
+  type            String   // "image", "voice", "body", "fusion"
+  title           String
+  timestamp       DateTime @default(now())
+  fileUrl         String?
+  fileName        String?
+  inputUrl        String?
+  inputText       String?
+  emotion         String?  @default("Calm & Focused")
+  confidence      Int      @default(88)
+  vibe            String?  @default("Authentic Clarity")
+  signalQuality   String?  @default("Good") // "Good", "Fair", "Poor"
+  qualityReason   String?  @default("Clear subject framing with balanced lighting.")
+  context         String?  @default("Natural studio lighting")
+  signalsData     String   // JSON string
+  emotionData     String   // JSON string
+  vibeData        String   // JSON string
+  insightsData    String   // JSON string
+  recommendations String   // JSON string
+  explanationData String   // JSON string
+  isDemo          Boolean  @default(false)
+  notes           String?
+  createdAt       DateTime @default(now())
+
+  user            User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  generatedContents GeneratedContent[]
+
+  @@index([userId, type])
+}
+
+model VoiceAnalysis {
+  id                  String   @id @default(cuid())
+  userId              String
+  title               String   @default("Vocal Signal Session")
+  timestamp           DateTime @default(now())
+  audioUrl            String?
+  fileName            String?
+  mimeType            String?  @default("audio/webm")
+  fileSize            Int?
+  duration            Float    @default(24.0)
+  pitch               String   @default("Medium")
+  pitchHz             Float    @default(142.5)
+  pitchVariation      String   @default("Moderate")
+  tone                String   @default("Warm, Resonant, Measured")
+  energy              Int      @default(84)
+  speechSpeed         String   @default("Normal")
+  wordsPerMinute      Int      @default(148)
+  pauseFrequency      Float    @default(0.42)
+  speakingSpeed       Float    @default(2.4)
+  speechIntensity     Float    @default(72.0)
+  loudness            Float    @default(-18.5)
+  vocalEnergy         Int      @default(80)
+  emotion             String   @default("Calm")
+  emotionDistribution String?  // JSON string
+  confidence          Int      @default(87)
+  backgroundNoise     String   @default("Low")
+  volume              String   @default("Good")
+  clarity             Int      @default(92)
+  signalQuality       String   @default("Good")
+  qualityReason       String   @default("Clean acoustic profile with minimal reverberation.")
+  qualityNotes        String?  // JSON string or notes
+  evidence            String?  // JSON string
+  transcript          String?
+  fillerWords         String?  // JSON string
+  timeline            String?  // JSON string
+  coachInsights       String?  // JSON string
+  isDemo              Boolean  @default(false)
+  createdAt           DateTime @default(now())
+  updatedAt           DateTime @default(now()) @updatedAt
+
+  user                User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+}
+
+model BodyAnalysis {
+  id                          String   @id @default(cuid())
+  userId                      String
+  title                       String   @default("Physical Presence Scan")
+  timestamp                   DateTime @default(now())
+  sourceType                  String   @default("camera") // "camera", "upload", "sample"
+  imageUrl                    String?
+  storageKey                  String?
+  width                       Int      @default(1080)
+  height                      Int      @default(1920)
+  captureMode                 String   @default("portrait") // "portrait", "upper_body", "full_body"
+  eyeContact                  Int      @default(92)
+  posture                     Int      @default(88)
+  gestures                    Int      @default(84)
+  focus                       Int      @default(90)
+  engagement                  Int      @default(91)
+  attention                   Int      @default(89)
+  concentration               Int      @default(87)
+  communicationEffectiveness  Int      @default(93)
+  confidence                  Int      @default(89)
+  bodyState                   String   @default("Open, Grounded, Centered")
+  postureSignal               String   @default("Upright")
+  postureScore                Int?     @default(88)
+  gazeSignal                  String   @default("Centered")
+  gazeScore                   Int?     @default(90)
+  gestureSignal               String   @default("Moderate")
+  movementStability           String   @default("High")
+  modelConfidence             Int      @default(88)
+  signalQualityScore          Int      @default(90)
+  framing                     String   @default("Upper torso fully aligned")
+  lighting                    String   @default("Optimal direct softlight")
+  bodyVisibility              String   @default("High (Full Shoulder & Head Alignment)")
+  cameraStability             String   @default("Stable (Zero Drift)")
+  signalQuality               String   @default("Good")
+  qualityReason               String   @default("Facial mesh and clavicle anchor points verified.")
+  evidenceData                String?  // JSON string of observed anatomical signals
+  observationsData            String?  // JSON string of primary findings
+  coachInsights               String?  // JSON string of presentation coach advice
+  isDemo                      Boolean  @default(false)
+  createdAt                   DateTime @default(now())
+  updatedAt                   DateTime @default(now()) @updatedAt
+
+  user                        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+}
+
+model FusionAnalysis {
+  id                  String   @id @default(cuid())
+  userId              String
+  title               String   @default("Multimodal Synthesis")
+  context             String?  @default("Presentation")
+  imageAnalysisId     String?
+  voiceAnalysisId     String?
+  bodyAnalysisId      String?
+  timestamp           DateTime @default(now())
+  modalityCount       Int      @default(3)
+
+  faceEmotion         String?  @default("Warm Engagement")
+  faceConfidence      Int?     @default(90)
+  voiceEmotion        String?  @default("Measured Assertiveness")
+  voiceConfidence     Int?     @default(88)
+  bodyState           String?  @default("Open & Grounded")
+  bodyConfidence      Int?     @default(89)
+
+  overallVibe         String   @default("Cohesive Communication")
+  agreementScore      Int      @default(88)
+  consistency         Int      @default(88)
+  confidence          Int      @default(87)
+  signalQualityScore  Int      @default(88)
+  signalQuality       String   @default("Good")
+
+  convergentSignals   String?  // JSON string array
+  divergentSignals    String?  // JSON string array
+  evidence            String?  // JSON string array or formatted string
+  interpretation      String?
+  limitations         String?  // JSON string array
+  recommendations     String?  // JSON string array
+  explanation         String?
+
+  isDemo              Boolean  @default(false)
+  createdAt           DateTime @default(now())
+  updatedAt           DateTime @default(now()) @updatedAt
+
+  user                User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+}
+
+model JournalEntry {
+  id          String   @id @default(cuid())
+  userId      String
+  date        DateTime @default(now())
+  analysisId  String?
+  vibe        String
+  emotion     String
+  confidence  Int
+  context     String
+  userNote    String
+  signalsData String   // JSON array
+  sourceMode  String
+
+  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+}
+
+model Insight {
+  id            String   @id @default(cuid())
+  userId        String
+  category      String   // "confidence", "pacing", "vocal", "posture"
+  title         String
+  description   String
+  confidence    Int      @default(90)
+  changePercent Int      @default(7)
+  metric        String   @default("Confidence")
+  createdAt     DateTime @default(now())
+
+  user          User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+}
+
+model SessionReport {
+  id                 String   @id @default(cuid())
+  userId             String
+  sessionId          String
+  mode               String   @default("presentation")
+  duration           Int      @default(120) // seconds
+  presentationScore  Int      @default(88)
+  summary            String
+  recommendations    String   // JSON string
+  signalsData        String   // JSON string
+  createdAt          DateTime @default(now())
+
+  user               User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+}
+
+model Notification {
+  id        String   @id @default(cuid())
+  userId    String
+  type      String   // "analysisComplete", "weeklyReport", "insightAvailable", "security"
+  title     String
+  message   String
+  read      Boolean  @default(false)
+  link      String?
+  createdAt DateTime @default(now())
+
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+}
+
+model GeneratedContent {
+  id          String   @id @default(cuid())
+  analysisId  String
+  userId      String
+  type        String   // "caption", "hashtags", "music", "translation"
+  platform    String?
+  language    String?
+  content     String   // JSON string or text
+  createdAt   DateTime @default(now())
+
+  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  analysis    Analysis @relation(fields: [analysisId], references: [id], onDelete: Cascade)
+
+  @@index([analysisId])
+  @@index([userId])
+}
+
+model BatchAnalysis {
+  id             String      @id @default(cuid())
+  userId         String
+  title          String      @default("Batch Image Queue")
+  status         String      @default("COMPLETED") // "QUEUED", "PROCESSING", "COMPLETED", "FAILED"
+  totalItems     Int         @default(0)
+  completedCount Int         @default(0)
+  failedCount    Int         @default(0)
+  createdAt      DateTime    @default(now())
+  updatedAt      DateTime    @updatedAt
+
+  user           User        @relation(fields: [userId], references: [id], onDelete: Cascade)
+  items          BatchItem[]
+
+  @@index([userId])
+}
+
+model BatchItem {
+  id           String        @id @default(cuid())
+  batchId      String
+  fileName     String
+  fileUrl      String?
+  fileSize     Int?
+  status       String        @default("COMPLETED") // "QUEUED", "PROCESSING", "COMPLETED", "FAILED"
+  progress     Int           @default(100)
+  errorMessage String?
+  analysisId   String?
+  emotion      String?
+  confidence   Int?
+  vibe         String?
+  createdAt    DateTime      @default(now())
+
+  batch        BatchAnalysis @relation(fields: [batchId], references: [id], onDelete: Cascade)
+
+  @@index([batchId])
+}
+
+model Report {
+  id           String   @id @default(cuid())
+  userId       String
+  type         String   // "session", "weekly", "monthly"
+  title        String
+  timeframe    String   // e.g. "Last 7 Days", "October 2026"
+  summary      String
+  metricsData  String   // JSON string
+  signalsData  String   // JSON string
+  evidenceData String   // JSON string
+  tipsData     String   // JSON string
+  disclaimer   String   @default("AI-generated self-reflection signals. Not a medical diagnosis.")
+  createdAt    DateTime @default(now())
+
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId, type])
+}
+
+model Comparison {
+  id            String   @id @default(cuid())
+  userId        String
+  analysisAId   String
+  analysisBId   String
+  title         String   @default("Session Comparison")
+  summary       String   // JSON or text summary
+  metrics       String   // JSON string of metrics comparison
+  changes       String   // JSON string of improved, stable, decreased
+  commonMetrics String   // JSON string of common modalities and metrics
+  evidence      String   // JSON string of comparative evidence
+  limitations   String?  // JSON string of limitations
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @default(now()) @updatedAt
+
+  user          User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+}
+
+model PresentationSession {
+  id               String   @id @default(cuid())
+  userId           String
+  title            String   @default("Presentation Rehearsal")
+  context          String   @default("General")
+  targetDuration   Int      @default(300)
+  targetPaceMin    Int      @default(140)
+  targetPaceMax    Int      @default(150)
+  duration         Int      @default(0)
+  audioUrl         String?
+  audioStorageKey  String?
+  videoUrl         String?
+  videoStorageKey  String?
+  transcript       String?
+  pace             Int      @default(0)
+  pauseCount       Int      @default(0)
+  avgPauseDuration Float    @default(0)
+  fillerCount      Int?     @default(0)
+  fillerRate       Float?   @default(0)
+  cameraEngagement Int?     @default(0)
+  posture          Int?     @default(0)
+  gestureActivity  String?  @default("Moderate")
+  signalQuality    String   @default("Good")
+  audioQuality     String   @default("Good")
+  videoQuality     String   @default("Good")
+  framingQuality   String   @default("Good")
+  coaching         String   @default("[]")
+  strengths        String   @default("[]")
+  improvements     String   @default("[]")
+  practicePlan     String   @default("{}")
+  feedbackMode     String?  @default("Standard") // Minimal, Standard, Detailed
+  topic            String?  // Presentation Topic
+  userNotes        String?  // Optional private rehearsal notes
+  longestPause     Float?   @default(0)
+  isDemo           Boolean  @default(false)
+  createdAt        DateTime @default(now())
+  updatedAt        DateTime @default(now()) @updatedAt
+
+  user             User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  integrityEvents  PresentationIntegrityEvent[]
+
+  @@index([userId])
+}
+
+model PresentationIntegrityEvent {
+  id          String              @id @default(cuid())
+  sessionId   String
+  userId      String
+  type        String              // "TAB_SWITCH", "WINDOW_BLUR", "PAGE_HIDDEN", "FULLSCREEN_EXIT", "CAMERA_LOST", "FACE_NOT_VISIBLE", "MULTIPLE_FACES_DETECTED", "MICROPHONE_DISCONNECTED", "NETWORK_INTERRUPT"
+  timestamp   Float               @default(0)
+  duration    Float?              @default(0)
+  source      String?             @default("client_event_monitor")
+  metadata    String?             // JSON string
+  createdAt   DateTime            @default(now())
+
+  session     PresentationSession @relation(fields: [sessionId], references: [id], onDelete: Cascade)
+  user        User                @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([sessionId])
+  @@index([userId])
+  @@index([type])
+}
+
+model InterviewQuestion {
+  id                 String            @id @default(cuid())
+  userId             String?
+  category           String            // "Executive Leadership", "Product & Architecture", "Behavioral Resilience", "Technical Fundamentals", "Project Discussion", "Problem Solving", "Communication", "HR / General", "System Design", "Custom"
+  subCategory        String?
+  role               String            @default("General") // Primary role
+  roles              String?           // JSON array of applicable roles e.g. ["Software Engineer", "Backend Developer"]
+  interviewTypes     String?           // JSON array of applicable types e.g. ["Technical", "System Design"]
+  difficulty         String            @default("Intermediate") // "Easy", "Intermediate", "Advanced", "Expert"
+  tags               String?           // JSON array of tags e.g. ["sql", "join", "rdbms"]
+  skills             String?           // JSON array of skills e.g. ["SQL", "Data Modeling"]
+  question           String
+  criteria           String            // Key evaluation criteria
+  whyThisQuestion    String?           // Pedagogical rationale
+  timeTargetMin      Int               @default(60)
+  timeTargetMax      Int               @default(90)
+  expectedConcepts   String?           // JSON array of required concepts
+  acceptableConcepts String?           // JSON array of alternative acceptable concepts
+  commonMistakes     String?           // JSON array of common misconceptions
+  referenceAnswer    String?           // Reference answer direction
+  rubric             String            // JSON string of rubric weights and dimensions
+  followUpTemplates  String?           // JSON array of follow-up question templates
+  hints              String?           // JSON array of progressive hints for practice mode
+  isCustom           Boolean           @default(false)
+  source             String?           @default("system") // "system", "user", "ai_jd", "ai_resume", "resume", "job_description", "study_material"
+  sourceType         String?           @default("standard") // "resume", "job_description", "study_material", "standard", "custom", "ai_generated"
+  sourceDocumentId   String?
+  sourceChunkId      String?
+  sourceCitation     String?           // e.g. "DBMS Notes.pdf — Page 42"
+  page               Int?
+  section            String?
+  createdAt          DateTime          @default(now())
+  updatedAt          DateTime          @updatedAt
+
+  user               User?             @relation(fields: [userId], references: [id], onDelete: Cascade)
+  answers            InterviewAnswer[]
+
+  @@index([userId])
+  @@index([role, category, difficulty])
+  @@index([sourceDocumentId])
+}
+
+model InterviewSession {
+  id                  String                    @id @default(cuid())
+  userId              String
+  role                String                    @default("Software Engineer")
+  position            String                    @default("Junior") // "Student / Intern", "Fresher / Entry Level", "Associate", "Junior", "Mid-Level", "Senior", "Lead", "Manager", "Custom"
+  experienceRange     String                    @default("1–3 years") // "0–1 years", "1–3 years", "3–5 years", "5–8 years", "8+ years", "Custom"
+  interviewType       String                    @default("Behavioral") // "Behavioral", "Technical", "Project", "HR", "Leadership", "Product", "System Design", "Communication", "Problem Solving", "Mixed", "Custom"
+  category            String                    @default("All Prompts")
+  difficulty          String                    @default("Intermediate")
+  maxDifficulty       String                    @default("Expert")
+  practiceMode        String                    @default("Interview") // "Interview", "Practice", "Study"
+  learningMode        String                    @default("Interview") // "Interview", "Practice", "Study"
+  questionSources     String?                   // JSON array e.g. ["RESUME", "JOB_DESCRIPTION", "STUDY_MATERIAL", "STANDARD"]
+  documentIds         String?                   // JSON array of active document IDs
+  jobDescription      String?
+  resumeText          String?
+  resumeId            String?
+  questionCount       Int                       @default(5)
+  currentQuestionIndex Int                      @default(0)
+  targetDuration      Int                       @default(300)
+  targetMin           Int                       @default(60)
+  targetMax           Int                       @default(90)
+  cameraMode          String                    @default("enabled") // "enabled", "audio_only"
+  cameraEnabled       Boolean                   @default(true)
+  microphoneEnabled   Boolean                   @default(true)
+  adaptiveDifficulty  Boolean                   @default(true)
+  followUpsEnabled    Boolean                   @default(true)
+  status              String                    @default("IN_PROGRESS") // "IN_PROGRESS", "COMPLETED", "ABANDONED"
+  createdAt           DateTime                  @default(now())
+  updatedAt           DateTime                  @updatedAt
+  completedAt         DateTime?
+
+  user                User                      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  answers             InterviewAnswer[]
+  integrityEvents     InterviewIntegrityEvent[]
+
+  @@index([userId])
+  @@index([status])
+}
+
+model InterviewAnswer {
+  id                 String                    @id @default(cuid())
+  sessionId          String
+  questionId         String
+  userId             String
+  parentAnswerId     String?
+  answerType         String                    @default("PRIMARY") // "PRIMARY", "FOLLOW_UP_1", "FOLLOW_UP_2"
+  attemptNumber      Int                       @default(1)
+  textAnswer         String?                   // Typed answer text
+  audioUrl           String?
+  videoUrl           String?
+  audioStorageKey    String?
+  videoStorageKey    String?
+  duration           Float                     @default(0)
+  transcript         String?
+  wpm                Int                       @default(0)
+  pauseCount         Int                       @default(0)
+  avgPauseDuration   Float                     @default(0)
+  longestPause       Float                     @default(0)
+  fillerCount        Int                       @default(0)
+  fillerRate         Float                     @default(0)
+  cameraFacingSignal String?                   @default("Good") // "Mostly camera-facing", "Frequently away", "Uncertain"
+  faceVisibility     Float?                    @default(0.94)
+  postureSignal      String?                   @default("Stable") // "Stable", "Slight tilt", "Variable"
+  framingQuality     String?                   @default("Good")
+  audioQuality       String?                   @default("Good")
+  videoQuality       String?                   @default("Good")
+  sourceDocumentId   String?
+  sourceChunkId      String?
+  sourceCitation     String?
+  integrityEvents    String?                   // JSON summary of integrity signals during this answer
+  status             String                    @default("COMPLETED") // "RECORDED", "COMPLETED", "SKIPPED", "NEEDS_RETRY"
+  createdAt          DateTime                  @default(now())
+  updatedAt          DateTime                  @updatedAt
+
+  user               User                      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  session            InterviewSession          @relation(fields: [sessionId], references: [id], onDelete: Cascade)
+  question           InterviewQuestion         @relation(fields: [questionId], references: [id], onDelete: Cascade)
+  parentAnswer       InterviewAnswer?          @relation("AnswerFollowUps", fields: [parentAnswerId], references: [id], onDelete: SetNull)
+  followUpAnswers    InterviewAnswer[]         @relation("AnswerFollowUps")
+  evaluation         InterviewEvaluation?
+  integrityRecords   InterviewIntegrityEvent[]
+
+  @@index([sessionId])
+  @@index([userId])
+  @@index([questionId])
+  @@index([parentAnswerId])
+}
+
+model InterviewEvaluation {
+  id                     String          @id @default(cuid())
+  answerId               String          @unique
+  status                 String          @default("PARTIALLY_CORRECT") // "CORRECT", "MOSTLY_CORRECT", "PARTIALLY_CORRECT", "WEAK", "INCORRECT", "INSUFFICIENT_INFORMATION", "NOT_EVALUATABLE"
+  overallScore           Int             @default(0)
+  structureScore         Int             @default(0)
+  relevanceScore         Int             @default(0)
+  clarityScore           Int             @default(0)
+  deliveryScore          Int             @default(0)
+  evidenceScore          Int             @default(0)
+  categoryScores         String?         // JSON object e.g. { technical: 85, communication: 80, structure: 90, delivery: 85 }
+  strengths              String          // JSON array
+  improvements           String          // JSON array (Focus next)
+  nextPractice           String          // JSON array
+  explanation            String?         // Detailed conceptual explanation
+  missingConcepts        String?         // JSON array of missing required concepts
+  incorrectConcepts      String?         // JSON array of incorrect concept details [{ claim, problem, correctConcept }]
+  referenceAnswer        String?         // Concise correct reference answer
+  improvedAnswer         String?         // Interview-ready improved answer
+  simpleExplanation      String?         // Simple layman explanation
+  whyThisAssessment      String?         // Concrete evidence quote
+  attemptComparison      String?         // JSON object comparing previous attempt score vs current attempt
+  feedback               String          // Synthesis narrative
+  sourceCitations        String?         // JSON array of citations { documentName, page, section, quote }
+  transcriptObservations String?
+  deliveryObservations   String?
+  rubricVersion          String          @default("2.0.0")
+  analysisProvider       String          @default("vibelens-advanced-engine-v2")
+  createdAt              DateTime        @default(now())
+
+  answer                 InterviewAnswer @relation(fields: [answerId], references: [id], onDelete: Cascade)
+
+  @@index([answerId])
+}
+
+model InterviewFollowUp {
+  id               String   @id @default(cuid())
+  answerId         String
+  parentQuestionId String
+  question         String
+  difficulty       String   @default("Intermediate")
+  reason           String?
+  createdAt        DateTime @default(now())
+
+  @@index([answerId])
+  @@index([parentQuestionId])
+}
+
+model SkillMastery {
+  id              String   @id @default(cuid())
+  userId          String
+  skill           String
+  attempts        Int      @default(0)
+  averageScore    Float    @default(0)
+  recentScore     Int      @default(0)
+  masteryState    String   @default("Developing") // "Needs Practice", "Developing", "Strong", "Consistent"
+  lastPracticedAt DateTime @default(now())
+
+  user            User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, skill])
+  @@index([userId])
+}
+
+model InterviewSkillProgress {
+  id              String   @id @default(cuid())
+  userId          String
+  skill           String
+  masteryState    String   @default("Developing") // "Needs Practice", "Developing", "Strong", "Consistent"
+  attempts        Int      @default(0)
+  averageScore    Float    @default(0)
+  recentScores    String?  // JSON array of recent scores
+  strengths       String?  // JSON array
+  weaknesses      String?  // JSON array
+  sourceDocument  String?
+  lastPracticedAt DateTime @default(now())
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+
+  user            User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, skill])
+  @@index([userId])
+}
+
+model InterviewIntegrityEvent {
+  id          String           @id @default(cuid())
+  sessionId   String
+  answerId    String?
+  userId      String
+  type        String           // "TAB_SWITCH", "WINDOW_BLUR", "PAGE_HIDDEN", "PASTE_DURING_ANSWER", "COPY_DURING_ANSWER", "FULLSCREEN_EXIT", "CAMERA_LOST", "FACE_NOT_VISIBLE", "MULTIPLE_FACES_DETECTED", "LONG_OFF_CAMERA", "MICROPHONE_DISCONNECTED", "NETWORK_INTERRUPT"
+  timestamp   Float            @default(0) // Seconds into session or answer
+  duration    Float?           @default(0) // Duration in seconds
+  confidence  Float?           @default(1.0)
+  source      String?          @default("client_event_monitor")
+  metadata    String?          // JSON metadata
+  createdAt   DateTime         @default(now())
+
+  session     InterviewSession @relation(fields: [sessionId], references: [id], onDelete: Cascade)
+  answer      InterviewAnswer? @relation(fields: [answerId], references: [id], onDelete: SetNull)
+  user        User             @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([sessionId])
+  @@index([answerId])
+  @@index([userId])
+  @@index([type])
+}
+
+model UserDocument {
+  id                     String          @id @default(cuid())
+  userId                 String
+  filename               String
+  type                   String          // "pdf", "docx", "txt"
+  mimeType               String?
+  size                   Int
+  pageCount              Int             @default(1)
+  title                  String?
+  sourceType             String          // "RESUME", "JOB_DESCRIPTION", "STUDY_MATERIAL"
+  status                 String          @default("READY") // "UPLOADING", "PROCESSING", "READY", "FAILED", "DELETED"
+  storagePath            String?
+  isSelectedForInterview Boolean         @default(true)
+  metadata               String?         // JSON string
+  errorMessage           String?
+  createdAt              DateTime        @default(now())
+  updatedAt              DateTime        @updatedAt
+
+  user                   User            @relation(fields: [userId], references: [id], onDelete: Cascade)
+  chunks                 DocumentChunk[]
+  resumeProfiles         ResumeProfile[]
+  jobDescriptions        JobDescription[]
+  quizzes                DocumentQuiz[]
+  flashcards             DocumentFlashcard[]
+
+  @@index([userId])
+  @@index([sourceType])
+  @@index([status])
+}
+
+model DocumentChunk {
+  id         String       @id @default(cuid())
+  documentId String
+  userId     String
+  page       Int          @default(1)
+  section    String?
+  text       String
+  tokenCount Int          @default(0)
+  metadata   String?      // JSON string
+  createdAt  DateTime     @default(now())
+
+  document   UserDocument @relation(fields: [documentId], references: [id], onDelete: Cascade)
+  user       User         @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([documentId])
+  @@index([userId])
+  @@index([page])
+}
+
+model ResumeProfile {
+  id             String        @id @default(cuid())
+  userId         String
+  documentId     String?
+  name           String?
+  summary        String?
+  education      String?       // JSON array
+  experience     String?       // JSON array
+  internships    String?       // JSON array
+  projects       String?       // JSON array
+  skills         String?       // JSON array
+  technologies   String?       // JSON array
+  certifications String?       // JSON array
+  achievements   String?       // JSON array
+  rawText        String?
+  createdAt      DateTime      @default(now())
+  updatedAt      DateTime      @updatedAt
+
+  user           User          @relation(fields: [userId], references: [id], onDelete: Cascade)
+  document       UserDocument? @relation(fields: [documentId], references: [id], onDelete: SetNull)
+
+  @@index([userId])
+  @@index([documentId])
+}
+
+model JobDescription {
+  id              String        @id @default(cuid())
+  userId          String
+  documentId      String?
+  title           String?
+  role            String?
+  company         String?
+  requirements    String?       // JSON array
+  responsibilities String?      // JSON array
+  skills          String?       // JSON array
+  tools           String?       // JSON array
+  experienceLevel String?
+  rawText         String?
+  createdAt       DateTime      @default(now())
+  updatedAt       DateTime      @updatedAt
+
+  user            User          @relation(fields: [userId], references: [id], onDelete: Cascade)
+  document        UserDocument? @relation(fields: [documentId], references: [id], onDelete: SetNull)
+
+  @@index([userId])
+  @@index([documentId])
+}
+
+model AiConversation {
+  id         String      @id @default(cuid())
+  userId     String
+  title      String      @default("Study Assistant")
+  documentId String?
+  mode       String      @default("STUDY_ASSISTANT") // "STUDY_ASSISTANT", "INTERVIEW_COACH", "GENERAL"
+  createdAt  DateTime    @default(now())
+  updatedAt  DateTime    @updatedAt
+
+  user       User        @relation(fields: [userId], references: [id], onDelete: Cascade)
+  messages   AiMessage[]
+
+  @@index([userId])
+}
+
+model AiMessage {
+  id             String         @id @default(cuid())
+  conversationId String
+  role           String         // "user", "assistant", "system"
+  content        String
+  citations      String?        // JSON string of source citations [{ documentId, title, page, section, text }]
+  createdAt      DateTime       @default(now())
+
+  conversation   AiConversation @relation(fields: [conversationId], references: [id], onDelete: Cascade)
+
+  @@index([conversationId])
+}
+
+model DocumentQuiz {
+  id             String       @id @default(cuid())
+  userId         String
+  documentId     String
+  title          String
+  difficulty     String       @default("Intermediate")
+  questionsCount Int          @default(5)
+  questionsData  String       // JSON string of questions [{ id, question, options, answerIndex, explanation, citation, page }]
+  createdAt      DateTime     @default(now())
+
+  user           User         @relation(fields: [userId], references: [id], onDelete: Cascade)
+  document       UserDocument @relation(fields: [documentId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@index([documentId])
+}
+
+model DocumentFlashcard {
+  id            String       @id @default(cuid())
+  userId        String
+  documentId    String
+  front         String       // Term or Question
+  back          String       // Definition or Concept explanation
+  topic         String?
+  difficulty    String       @default("Intermediate") // "Easy", "Intermediate", "Advanced"
+  masteryStatus String       @default("NEW") // "NEW", "REVIEW_AGAIN", "LEARNING", "MASTERED"
+  citation      String?      // e.g. "DBMS Notes.pdf — Page 42"
+  page          Int?
+  createdAt     DateTime     @default(now())
+  updatedAt     DateTime     @updatedAt
+
+  user          User         @relation(fields: [userId], references: [id], onDelete: Cascade)
+  document      UserDocument @relation(fields: [documentId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@index([documentId])
+  @@index([masteryStatus])
+}
+
+model PersonalizedStudyPlan {
+  id           String   @id @default(cuid())
+  userId       String
+  title        String   @default("7-Day Personalized Practice Plan")
+  targetRole   String
+  durationDays Int      @default(7)
+  planData     String   // JSON string of days [{ day: 1, title: "SQL Joins", focusSkill: "SQL", description: "...", exercises: [...], recommendedDocuments: [...] }]
+  weakSkills   String?  // JSON array of weak skills targeted
+  status       String   @default("ACTIVE") // "ACTIVE", "COMPLETED"
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+}
+
+model AiMemory {
+  id                    String   @id @default(cuid())
+  userId                String   @unique
+  targetRole            String?  @default("Software Engineer")
+  targetPosition        String?  @default("Junior")
+  preferredDifficulty   String?  @default("Intermediate")
+  skills                String?  // JSON array of known candidate skills
+  weakTopics            String?  // JSON array of weak topics identified from evaluations
+  strongTopics          String?  // JSON array of strong topics identified
+  recentSessionsSummary String?  // JSON summary of recent performance
+  interviewPreferences  String?  // JSON preferences e.g. adaptive difficulty, question counts
+  updatedAt             DateTime @updatedAt
+
+  user                  User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+}
+
+
+

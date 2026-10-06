@@ -1,0 +1,403 @@
+{
+  "users": [
+    {
+      "id": "usr_1788878879801_fyc91",
+      "name": "Priya Sharma",
+      "email": "user_689419391@example.com",
+      "passwordHash": "$2b$10$1Cf4Oo3kuUitoGxnW9M2pOHdc5Gu9l.m9wHZ94Px0QDda0kTQfRkS",
+      "avatar": "/assets/editorial/hero-editorial-woman.jpg",
+      "plan": "Free Plan",
+      "preferences": {
+        "theme": "editorial",
+        "demoMode": true,
+        "autoCalibrate": true,
+        "sensoryFeedback": true,
+        "privateMode": false
+      },
+      "baseline": {
+        "confidence": 82,
+        "speechPaceWpm": 138,
+        "postureAlignment": 85,
+        "vocalEnergy": 78
+      },
+      "createdAt": "2026-09-08T14:47:59.801Z"
+    },
+    {
+      "id": "user_maya_01",
+      "name": "Maya Lin",
+      "email": "maya@vibelens.ai",
+      "avatar": "/assets/vibelens/vibelens-realistic-hero.jpg",
+      "preferences": {
+        "theme": "editorial",
+        "demoMode": true,
+        "autoCalibrate": true,
+        "sensoryFeedback": true,
+        "privateMode": false
+      },
+      "baseline": {
+        "confidence": 82,
+        "speechPaceWpm": 138,
+        "postureAlignment": 85,
+        "vocalEnergy": 76
+      },
+      "createdAt": "2026-08-01T00:00:00.000Z",
+      "passwordHash": "$2b$10$QUk/N7kcFjFmslptYo6L2O87nheYnlVrSzttRepjHH.eVf9IZcJOm"
+    },
+    {
+      "id": "user_sachin_01",
+      "name": "Sachin Kumar",
+      "email": "sachin@example.com",
+      "passwordHash": "$2b$10$QUk/N7kcFjFmslptYo6L2O87nheYnlVrSzttRepjHH.eVf9IZcJOm",
+      "avatar": "/assets/editorial/hero-editorial-woman.jpg",
+      "plan": "Pro Plan",
+      "preferences": {
+        "theme": "editorial",
+        "demoMode": true,
+        "autoCalibrate": true,
+        "sensoryFeedback": true,
+        "privateMode": false
+      },
+      "baseline": {
+        "confidence": 88,
+        "speechPaceWpm": 142,
+        "postureAlignment": 90,
+        "vocalEnergy": 82
+      },
+      "createdAt": "2026-08-01T00:00:00.000Z"
+    },
+    {
+      "name": "Aarav Sharma",
+      "email": "user_1788879953735@example.com",
+      "passwordHash": "$2b$10$ht/T0Rbf4Jmb49075eJeC./BscL8FjS3Uye/cIFN5ts4nWZMK3K0e",
+      "avatar": "/assets/editorial/hero-editorial-woman.jpg",
+      "plan": "Free Plan",
+      "preferences": {
+        "theme": "editorial",
+        "demoMode": true,
+        "autoCalibrate": true,
+        "sensoryFeedback": true,
+        "privateMode": false
+      },
+      "baseline": {
+        "confidence": 82,
+        "speechPaceWpm": 138,
+        "postureAlignment": 85,
+        "vocalEnergy": 78
+      },
+      "id": "usr_1788879953889_asa81",
+      "createdAt": "2026-09-08T15:05:53.889Z"
+    },
+    {
+      "name": "Rohan Verma",
+      "email": "test_user_7406@vibelens.ai",
+      "passwordHash": "$2b$10$WsZLb5OylD7sNVIFbswxVuTwa16x3z9JqIofhK7yk8ANrWc44x7Mu",
+      "avatar": "/assets/editorial/hero-editorial-woman.jpg",
+      "plan": "Free Plan",
+      "preferences": {
+        "theme": "editorial",
+        "demoMode": true,
+        "autoCalibrate": true,
+        "sensoryFeedback": true,
+        "privateMode": false
+      },
+      "baseline": {
+        "confidence": 82,
+        "speechPaceWpm": 138,
+        "postureAlignment": 85,
+        "vocalEnergy": 78
+      },
+      "id": "usr_1788880263708_ayu02",
+      "createdAt": "2026-09-08T15:11:03.708Z"
+    }
+  ],
+  "analyses": [
+    {
+      "id": "ana_001",
+      "userId": "user_maya_01",
+      "type": "fusion",
+      "title": "Executive Project Briefing",
+      "timestamp": "2026-09-07T14:30:00.000Z",
+      "inputUrl": "/assets/vibelens/vibelens-cinematic-hero.jpg",
+      "quality": {
+        "rating": "Good",
+        "resolution": "1080p Full HD",
+        "lighting": "Optimal",
+        "noiseLevel": "Low",
+        "faceVisibility": "High",
+        "framing": "Ideal"
+      },
+      "signals": {
+        "facialExpressions": [
+          "Relaxed Brow",
+          "Subtle Smile",
+          "Direct Gaze"
+        ],
+        "vocalTone": "Resonant, Warm, Measured",
+        "vocalEnergy": 84,
+        "speechPaceWpm": 148,
+        "postureAlignment": 92,
+        "eyeContactScore": 94,
+        "gesturesFrequency": "Balanced",
+        "environmentalContext": "Studio Workspace, Evening Natural Lighting"
+      },
+      "emotion": {
+        "primary": "Confident & Engaged",
+        "confidence": 94,
+        "secondary": "Calm Focus",
+        "valence": 0.85,
+        "arousal": 0.65
+      },
+      "vibe": {
+        "descriptor": "Grounded Creative Resonance",
+        "radialProfile": {
+          "calm": 88,
+          "energy": 78,
+          "confidence": 94,
+          "warmth": 86,
+          "focus": 92,
+          "engagement": 90
+        }
+      },
+      "insights": [
+        "Vocal cadence remained consistent within 145-152 WPM, demonstrating measured delivery.",
+        "Facial micro-expressions reflected steady engagement with zero indicators of strain.",
+        "Bimodal synthesis confirms alignment between verbal assertiveness and open postural cues."
+      ],
+      "recommendations": [
+        "Maintain current vocal pacing during Q&A transitions.",
+        "Incorporate intentional pause intervals following core strategic statements."
+      ],
+      "explanation": {
+        "observedSignals": [
+          "Sustained eye contact across 88% of speaking window",
+          "Balanced chest expansion indicative of diaphragmatic breathing",
+          "Warm harmonic resonance observed in the 120-220Hz fundamental frequency band"
+        ],
+        "aiInterpretation": "Subject demonstrates high self-regulation and organic social warmth.",
+        "confidenceRationale": "Multi-sensor cross-validation achieved 94% concordance across audio and vision streams.",
+        "whyThisResult": "Relaxed facial muscle tone combined with forward posture and dynamic vocal modulation produce a high-confidence resonance reading."
+      },
+      "isDemo": true,
+      "notes": "Preparation for Q3 Multimodal Intelligence keynote presentation."
+    },
+    {
+      "id": "ana_002",
+      "userId": "user_maya_01",
+      "type": "voice",
+      "title": "Investor Pitch Dry-Run",
+      "timestamp": "2026-09-06T10:15:00.000Z",
+      "quality": {
+        "rating": "Good",
+        "noiseLevel": "Low"
+      },
+      "signals": {
+        "vocalTone": "Dynamic, Focused, Clear",
+        "vocalEnergy": 88,
+        "speechPaceWpm": 154,
+        "environmentalContext": "Acoustically Treated Room"
+      },
+      "emotion": {
+        "primary": "Purposeful Drive",
+        "confidence": 91,
+        "secondary": "High Energy",
+        "valence": 0.75,
+        "arousal": 0.82
+      },
+      "vibe": {
+        "descriptor": "Dynamic Clarity",
+        "radialProfile": {
+          "calm": 74,
+          "energy": 88,
+          "confidence": 91,
+          "warmth": 80,
+          "focus": 95,
+          "engagement": 92
+        }
+      },
+      "insights": [
+        "Pitch elevation detected at opening hook (+18Hz above baseline), capturing audience interest.",
+        "Speech rate accelerated from 140 to 162 WPM during financial overview, signaling slight urgency."
+      ],
+      "recommendations": [
+        "Decelerate slightly when presenting unit economics to maximize retention.",
+        "Ground final sentence with descending intonation."
+      ],
+      "explanation": {
+        "observedSignals": [
+          "High vocal projection (68dB average)",
+          "Clear consonant articulation (96% clarity score)"
+        ],
+        "aiInterpretation": "Strong persuasive delivery with compelling urgency.",
+        "confidenceRationale": "High SNR (Signal-to-Noise Ratio) allowed precise acoustic prosody mapping.",
+        "whyThisResult": "Consistent breath control and elevated pitch variety correlate with high conviction."
+      },
+      "isDemo": true,
+      "notes": "First complete timed run-through of the deck."
+    },
+    {
+      "id": "ana_003",
+      "userId": "user_maya_01",
+      "type": "body",
+      "title": "Team Strategy Standup",
+      "timestamp": "2026-09-05T09:00:00.000Z",
+      "quality": {
+        "rating": "Good",
+        "lighting": "Optimal",
+        "faceVisibility": "High",
+        "framing": "Ideal"
+      },
+      "signals": {
+        "postureAlignment": 89,
+        "eyeContactScore": 91,
+        "gesturesFrequency": "Balanced",
+        "environmentalContext": "Sunlit Studio"
+      },
+      "emotion": {
+        "primary": "Open & Collaborative",
+        "confidence": 89,
+        "secondary": "Warm Engagement",
+        "valence": 0.88,
+        "arousal": 0.6
+      },
+      "vibe": {
+        "descriptor": "Approachable Leadership",
+        "radialProfile": {
+          "calm": 90,
+          "energy": 75,
+          "confidence": 89,
+          "warmth": 93,
+          "focus": 86,
+          "engagement": 94
+        }
+      },
+      "insights": [
+        "Open shoulder positioning maintained throughout 92% of the session.",
+        "Natural head nods synchronized with team member speaking turns."
+      ],
+      "recommendations": [
+        "Continue open-palm gestures during consensus-building segments."
+      ],
+      "explanation": {
+        "observedSignals": [
+          "Absence of defensive micro-postures (arm crosses, backward leans)",
+          "Frequent affirmative nodding"
+        ],
+        "aiInterpretation": "Highly receptive, psychologically safe leadership presence.",
+        "confidenceRationale": "Unobstructed camera viewpoint provided clean skeletal landmark tracking.",
+        "whyThisResult": "Relaxed spinal alignment and forward chest orientation indicate active listening."
+      },
+      "isDemo": true,
+      "notes": "Weekly sprint kickoff."
+    }
+  ],
+  "journal": [
+    {
+      "id": "jrn_001",
+      "userId": "user_maya_01",
+      "date": "2026-09-07T18:00:00.000Z",
+      "vibe": "Grounded Resonance",
+      "emotion": "Confident & Calm",
+      "confidence": 94,
+      "context": "Studio Workspace, Dusk",
+      "userNote": "Felt very natural during the keynote dry run today. Pacing was steady and breathing was centered.",
+      "signalsObserved": [
+        "Measured speech pace (148 WPM)",
+        "Erect spinal posture",
+        "Consistent eye focus"
+      ],
+      "sourceMode": "presentation-coach",
+      "thumbnailUrl": "/assets/vibelens/vibelens-cinematic-hero.jpg"
+    },
+    {
+      "id": "jrn_002",
+      "userId": "user_maya_01",
+      "date": "2026-09-06T19:30:00.000Z",
+      "vibe": "Dynamic Drive",
+      "emotion": "Energized & Intentional",
+      "confidence": 91,
+      "context": "Late Evening Lab",
+      "userNote": "Delivered the pitch with high energy. Identified need to slow down slightly on the metrics slide.",
+      "signalsObserved": [
+        "Pitch variety (+18Hz)",
+        "Active hand cadence",
+        "Clear vocal resonance"
+      ],
+      "sourceMode": "interview",
+      "thumbnailUrl": "/assets/vibelens/vibelens-realistic-hero.jpg"
+    },
+    {
+      "id": "jrn_003",
+      "userId": "user_maya_01",
+      "date": "2026-09-05T09:45:00.000Z",
+      "vibe": "Warm Receptivity",
+      "emotion": "Collaborative & Empathetic",
+      "confidence": 89,
+      "context": "Morning Natural Light",
+      "userNote": "Standup was productive. Focused on listening closely to team roadblocks.",
+      "signalsObserved": [
+        "Forward lean",
+        "Attentive micro-nodding",
+        "Open palms"
+      ],
+      "sourceMode": "daily-reflection",
+      "thumbnailUrl": "/assets/vibelens/vibelens-cinematic-scene.jpg"
+    }
+  ],
+  "profile": {
+    "name": "Maya Lin",
+    "title": "Product Designer & AI Systems Researcher",
+    "bio": "Exploring the boundary between human intent, non-verbal cues, and multimodal artificial intelligence.",
+    "baselineConfidence": 82,
+    "todayConfidence": 89,
+    "confidenceDelta": 7,
+    "baselinePaceWpm": 138,
+    "todayPaceWpm": 152,
+    "paceDelta": 14,
+    "postureAlignment": 91,
+    "engagementIndex": 94,
+    "weeklyTrend": [
+      {
+        "day": "Mon",
+        "confidence": 80,
+        "energy": 72,
+        "calm": 84
+      },
+      {
+        "day": "Tue",
+        "confidence": 82,
+        "energy": 76,
+        "calm": 86
+      },
+      {
+        "day": "Wed",
+        "confidence": 85,
+        "energy": 80,
+        "calm": 82
+      },
+      {
+        "day": "Thu",
+        "confidence": 84,
+        "energy": 78,
+        "calm": 85
+      },
+      {
+        "day": "Fri",
+        "confidence": 88,
+        "energy": 84,
+        "calm": 89
+      },
+      {
+        "day": "Sat",
+        "confidence": 91,
+        "energy": 86,
+        "calm": 92
+      },
+      {
+        "day": "Sun",
+        "confidence": 89,
+        "energy": 82,
+        "calm": 90
+      }
+    ]
+  }
+}

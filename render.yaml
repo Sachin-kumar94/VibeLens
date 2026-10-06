@@ -1,0 +1,25 @@
+services:
+  - type: web
+    name: vibelens
+    env: node
+    plan: free
+    region: oregon
+    buildCommand: npm run install:all && npm run build
+    startCommand: npm start
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: JWT_SECRET
+        generateValue: true
+      - key: SESSION_SECRET
+        generateValue: true
+      - key: DATABASE_URL
+        value: file:./data/vibelens.db
+      - key: FRONTEND_URL
+        value: https://vibelens.onrender.com
+      - key: BACKEND_URL
+        value: https://vibelens.onrender.com
+    disk:
+      name: vibelens-storage
+      mountPath: /app/backend/data
+      sizeGB: 1
