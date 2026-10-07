@@ -155,9 +155,9 @@ async function startServer() {
     console.warn("Prisma connection warning:", err?.message || err);
   }
 
-  app.listen(PORT, () => {
-    console.log(`✓ VibeLens Production-Grade API Server listening on http://localhost:${PORT}`);
-    providerRegistry.logStartupStatus();
+  app.listen(PORT, "0.0.0.0", () => {
+  console.log(`VibeLens Production-Grade API Server listening on http://0.0.0.0:${PORT}`);
+  providerRegistry.logStartupStatus();
   });
 }
 
