@@ -1,4 +1,4 @@
-const API_BASE = "/api";
+const API_BASE = "https://vibelens-d8j4.onrender.com/api";
 
 export interface UserProfile {
   id: string;
@@ -309,19 +309,19 @@ export const authApi = {
     });
   },
 
-  startGoogleLogin(): void {
-    window.location.href = "/api/auth/google";
+   startGoogleLogin(): void {
+    window.location.href = `${API_BASE}/auth/google`;
   },
 
   startMicrosoftLogin(): void {
-    window.location.href = "/api/auth/microsoft";
+    window.location.href = `${API_BASE}/auth/microsoft`;
   },
 
   startGithubLogin(): void {
-    window.location.href = "/api/auth/github";
+    window.location.href = `${API_BASE}/auth/github`;
   },
 
   startLinkedinLogin(): void {
-    window.location.href = "/api/auth/linkedin";
+    window.location.href = `${API_BASE}/auth/linkedin`;
   },
 };
