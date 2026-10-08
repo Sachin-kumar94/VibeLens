@@ -1,4 +1,4 @@
-const API_BASE = "https://vibelens-d8j4.onrender.com/api";
+const API_BASE = "/api";
 
 export interface UserProfile {
   id: string;
