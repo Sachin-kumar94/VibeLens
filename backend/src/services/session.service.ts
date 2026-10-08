@@ -146,7 +146,7 @@ export const sessionService = {
     res.cookie(COOKIE_NAME, rawToken, {
       httpOnly: true,
       secure: isSecure,
-      sameSite: "lax",
+      sameSite: "none",
       maxAge,
       path: "/",
     });
@@ -159,7 +159,7 @@ export const sessionService = {
     res.clearCookie(COOKIE_NAME, {
       httpOnly: true,
       secure: isSecure,
-      sameSite: "lax",
+      sameSite: "none",
       path: "/",
     });
   },
